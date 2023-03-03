@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.7.4"
+ruby "3.0.0"
 
 # A DSL for quickly creating web applications
 # https://github.com/sinatra/sinatra
@@ -60,9 +60,6 @@ group :test do
   gem "rspec-json_expectations", "~> 2.2"
 end
 
-group :production do
-  gem 'pg', '~> 1.4', '>= 1.4.3'
-end
 
 
 

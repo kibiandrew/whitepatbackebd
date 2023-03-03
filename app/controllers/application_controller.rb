@@ -13,8 +13,8 @@ class ApplicationController < Sinatra::Base
     user.to_json
    end
 
-   get '/reports' do
-    user = Report.order("id DESC")
+   get '/posts' do
+    user = Post.order("id DESC")
     #user= Report.all
     user.to_json
    end
@@ -73,39 +73,39 @@ class ApplicationController < Sinatra::Base
 
 # post reports
 
-   post '/postreports' do
-    postreport=Report.create(
+   post '/postposts' do
+    postpost=Post.create(
       title: params[:title],
       description: params[:description],
       location: params[:location],
       user_id: params[:user_id]
        )
-       postreport.to_json
+       postpost.to_json
    end
 
   #  update reports
-  patch '/updatereports/:id' do
-    updatereport=Report.find(params[:id])
-    updatereport.update(
+  patch '/updateposts/:id' do
+    updateposts=Post.find(params[:id])
+    updateposts.update(
       title: params[:title],
       description: params[:description],
       location: params[:location]
     )
-      updatereport.to_json
+    updateposts.to_json
 
   end
 
-  delete '/deletereports/:id' do
-    deletereport=Report.find(params[:id])
+  delete '/deleteposts/:id' do
+    deleteposts=Post.find(params[:id])
 
-    deletereport.destroy
-    deletereport.to_json
+    deleteposts.destroy
+    deleteposts.to_json
   end
 
   # filter reports by title
-  get '/filterreports/:title' do
-    reports=Report.find_by_title(params[:title])
-    reports.to_json
+  get '/filterposts/:title' do
+    posts=Post.find_by_title(params[:title])
+    posts.to_json
   end
 
 end
